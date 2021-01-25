@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="entradas" pageWidth="595" pageHeight="842" whenNoDataType="BlankPage" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="219714be-aeea-4c9f-9558-3bfb5b25e394">
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="descricaofatura" class="java.lang.String">
+		<fieldDescription><![CDATA[descricaofatura]]></fieldDescription>
+	</field>
+	<field name="movimentofinanceiro" class="java.lang.String">
+		<fieldDescription><![CDATA[movimentofinanceiro]]></fieldDescription>
+	</field>
+	<field name="valorrealizado" class="java.lang.Double">
+		<fieldDescription><![CDATA[valorrealizado]]></fieldDescription>
+	</field>
+	<field name="valorrealizar" class="java.lang.Double">
+		<fieldDescription><![CDATA[valorrealizar]]></fieldDescription>
+	</field>
+	<field name="data" class="java.util.Date">
+		<fieldDescription><![CDATA[data]]></fieldDescription>
+	</field>
+	<field name="id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[id]]></fieldDescription>
+	</field>
+	<variable name="totalfuturo" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{valorrealizar}]]></variableExpression>
+	</variable>
+	<variable name="totalrecebido" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{valorrealizado}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="15" uuid="ec156f28-d40c-47da-8bc1-b0bac786195a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d9f0f278-5a9b-4289-b41d-7c225b2b777b"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{movimentofinanceiro}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤#,##0.00;¤-#,##0.00">
+				<reportElement x="170" y="0" width="75" height="15" uuid="3f70e512-41d4-4d27-9211-1e805fe8229e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5d7620c5-c040-4fae-aea8-7c343fe0b088"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valorrealizar}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤#,##0.00;¤-#,##0.00">
+				<reportElement x="100" y="0" width="70" height="15" uuid="5a07be1f-4aba-4bce-8c9f-b34de55b2a2e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="bcb3b9a5-3836-4eed-b8b3-e4782cb424c7"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valorrealizado}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="18" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="3" width="100" height="15" uuid="7d2ef27b-f95d-40a3-8260-07dc71276771">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<textField pattern="¤#,##0.00;¤-#,##0.00" isBlankWhenNull="true">
+				<reportElement x="100" y="3" width="70" height="15" uuid="dd21f1fa-4773-408c-b5e7-1f4dfe3015f6">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{totalrecebido}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤#,##0.00;¤-#,##0.00" isBlankWhenNull="true">
+				<reportElement x="170" y="3" width="75" height="15" uuid="b095f6ef-2955-4e8b-8a6b-60289fd800db">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{totalfuturo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReceberCliente1" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="da0f1b4e-af65-4b29-91e7-2498317845ce">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="WebContent/WEB-INF/reports/templateReports/DataAdapter.xml"/>
+	<parameter name="cabecalho" class="java.lang.String"/>
+	<parameter name="beanCabecalho" class="java.util.List"/>
+	<parameter name="listacontrato" class="java.lang.String"/>
+	<parameter name="listaos" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="cliente" class="br.com.model.Pessoa">
+		<fieldDescription><![CDATA[cliente]]></fieldDescription>
+	</field>
+	<field name="dataFim" class="java.util.Date">
+		<fieldDescription><![CDATA[dataFim]]></fieldDescription>
+	</field>
+	<field name="faturasClienteContratos" class="java.util.List">
+		<fieldDescription><![CDATA[faturasClienteContratos]]></fieldDescription>
+	</field>
+	<field name="dataInicio" class="java.util.Date">
+		<fieldDescription><![CDATA[dataInicio]]></fieldDescription>
+	</field>
+	<field name="id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[id]]></fieldDescription>
+	</field>
+	<field name="empresa" class="br.com.model.Empresa">
+		<fieldDescription><![CDATA[empresa]]></fieldDescription>
+	</field>
+	<field name="faturasClienteOS" class="java.util.List">
+		<fieldDescription><![CDATA[faturasClienteOS]]></fieldDescription>
+	</field>
+	<field name="total" class="java.lang.Double">
+		<fieldDescription><![CDATA[total]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="81" splitType="Stretch">
+			<subreport>
+				<reportElement x="10" y="5" width="535" height="71" uuid="8db79ddb-1b1e-4a10-8359-6477bbe87662"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{beanCabecalho})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{cabecalho}]]></subreportExpression>
+			</subreport>
+		</band>
+	</title>
+	<detail>
+		<band height="118" splitType="Stretch">
+			<frame>
+				<reportElement x="0" y="15" width="364" height="61" uuid="ac0fbb47-8136-4351-b05e-b9967c82264d">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.1"/>
+				</box>
+				<image hAlign="Center" vAlign="Middle">
+					<reportElement stretchType="ContainerHeight" x="2" y="6" width="58" height="51" uuid="2bc2f128-8ec1-4d9e-b33b-f66357dbea00"/>
+					<imageExpression><![CDATA[new  java.io.ByteArrayInputStream((byte[]) $F{cliente}.getAvatar())]]></imageExpression>
+				</image>
+			</frame>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="103" y="18" width="258" height="12" uuid="349c671a-5063-472c-ac87-cf599a6e243e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cliente}.getRazao()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="64" y="18" width="37" height="12" uuid="79d6b8f0-e7a7-4583-966c-6cb522ea601a"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[Cliente:]]></text>
+			</staticText>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="103" y="31" width="258" height="12" uuid="0e72fb51-4feb-459c-9b67-66e9e9a0622e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cliente}.getEnderecoCob()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="64" y="31" width="37" height="12" uuid="6823024f-3ef4-4917-b755-c362d98fee6c"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[Endereço:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="64" y="44" width="37" height="12" uuid="998ceec2-e8e9-4ce9-8109-f0466facc168"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[Contato:]]></text>
+			</staticText>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="103" y="44" width="258" height="12" uuid="57766246-f4a0-4415-bc42-525a950e8758"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cliente}.getContato() +" Telefone(s):" + $F{cliente}.getFonecelular() +" "+ $F{cliente}.getFonefixo()]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="103" y="57" width="258" height="12" uuid="bf28a349-bd5c-4803-946b-2c417efd94f5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cliente}.getEmail()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="64" y="57" width="37" height="12" uuid="7d46bd7e-1b0d-42a3-84e6-1cd4905ab91c"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[Email:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="2" width="364" height="12" forecolor="#050000" backcolor="#BDBDBD" uuid="c6c46609-5379-485b-ba2d-f28a52b58786"/>
+				<box>
+					<pen lineWidth="0.1" lineColor="#787272"/>
+				</box>
+				<textElement>
+					<font size="10"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<text><![CDATA[Cliente]]></text>
+			</staticText>
+			<frame>
+				<reportElement x="388" y="16" width="157" height="60" uuid="b3a3857a-83fa-4364-812c-866158340151">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="0.05" lineStyle="Solid"/>
+					<topPen lineWidth="0.05" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.05" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.05" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.05" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+					<reportElement x="42" y="22" width="82" height="12" uuid="64fb0e25-f91f-4145-8cb4-d0820448af6b"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font size="7"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{dataFim}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="1" y="4" width="38" height="12" uuid="43a48b09-5225-46e2-8f78-adb231303994">
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="7"/>
+					</textElement>
+					<text><![CDATA[Data Inicio:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="22" width="38" height="12" uuid="00fe83c6-8728-4135-822f-dc4927d4d1e4">
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="7"/>
+					</textElement>
+					<text><![CDATA[Data Final:]]></text>
+				</staticText>
+				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+					<reportElement x="41" y="4" width="83" height="12" uuid="f61d6334-1630-4abc-bac4-2bb62de7aee4"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font size="7"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{dataInicio}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<staticText>
+				<reportElement mode="Opaque" x="388" y="3" width="157" height="12" forecolor="#050000" backcolor="#BDBDBD" uuid="28a3a1f8-8241-48d2-9f35-d6620c4e76c6"/>
+				<box>
+					<pen lineWidth="0.1" lineColor="#787272"/>
+				</box>
+				<textElement>
+					<font size="10"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<text><![CDATA[Período Consulta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="3" y="80" width="540" height="20" forecolor="#FCFAFA" backcolor="#030303" uuid="58801ca4-32d5-42ba-a858-8fb17538ce2b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="16" isBold="true" isItalic="false"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<text><![CDATA[Serviços a Receber]]></text>
+			</staticText>
+			<textField textAdjust="StretchHeight" pattern="¤#,##0.00;¤-#,##0.00" isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="437" y="80" width="99" height="20" forecolor="#FCFAFA" backcolor="#030303" uuid="9d432f0f-9f9d-49b1-b2bb-2c7762e05f1a"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="11">
+			<subreport>
+				<reportElement x="0" y="0" width="543" height="11" uuid="64bc4a9e-d0a3-4f8e-a293-c89fd28e1d97"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{faturasClienteContratos})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{listacontrato}]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="11">
+			<subreport>
+				<reportElement x="2" y="0" width="543" height="11" uuid="6fd45aaa-2eea-4fae-a684-27cdcf28afdd"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{faturasClienteOS})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{listaos}]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

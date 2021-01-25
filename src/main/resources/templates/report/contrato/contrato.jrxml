@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.13.0.final using JasperReports Library version 6.13.0-46ada4d1be8f3c5985fd0b6146f3ed44caed6f05  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="contrato" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4eedbb89-b4f6-4469-9ab6-f642a1688cf7">
+	<property name="template.engine" value="tabular_template"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#EEEFF0"/>
+		</conditionalStyle>
+	</style>
+	<style name="Table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+			<topPen lineWidth="1.0" lineColor="#000000"/>
+			<leftPen lineWidth="1.0" lineColor="#000000"/>
+			<bottomPen lineWidth="1.0" lineColor="#000000"/>
+			<rightPen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="tableDataset" uuid="fda2c2ba-2c78-4a3e-a7e3-392464bf239e">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+	</subDataset>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<title>
+		<band height="196" splitType="Stretch"/>
+	</title>
+	<detail>
+		<band height="361">
+			<frame>
+				<reportElement x="20" y="14" width="521" height="291" uuid="e331ecae-c4c5-43f2-9c63-42141a39bea7"/>
+				<textField textAdjust="StretchHeight">
+					<reportElement x="0" y="250" width="521" height="291" uuid="cd283aa2-6870-42af-badc-f78c5fca1735"/>
+					<textElement>
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[Destinatário:   
+PHOCUS SERVICOS E  REPRESENTACOES LTDA
+RUA TOMAS ACIOLI, 584         COMPLEMENTO A 
+BAIRRO: JOAQUIM TAVORA  CIDADE: FORTALEZA (CE) 
+CE TEL/FAX: 08538787846 CEP: 60135180 
+
+
+
+
+
+
+
+
+
+FRÁGIL
+NÂO EMPILHAR
+
+
+
+Remetnete:   
+Marcelo M Macedo
+Rua Delmiro Gouveia, 1074
+Juazeiro do Norte -CE
+63050-216]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<summary>
+		<band height="293" splitType="Stretch">
+			<property name="local_mesure_unitheight" value="pixel"/>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="263" width="556" height="30" backcolor="#E6E8E9" uuid="36aa233d-4305-48e6-974a-1bbf89bb3c8f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="9" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[THANKYOU FOR YOUR BUSINESS]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>
