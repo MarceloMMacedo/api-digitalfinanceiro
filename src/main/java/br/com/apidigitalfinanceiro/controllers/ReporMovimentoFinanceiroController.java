@@ -2,6 +2,7 @@ package br.com.apidigitalfinanceiro.controllers;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import br.com.apidigitalfinanceiro.dto.DemosntrativoFinanceiroDto;
+import br.com.apidigitalfinanceiro.dto.LivroCaixaDto;
 import br.com.apidigitalfinanceiro.dto.ReportDemostrativoFinancerio;
 import br.com.apidigitalfinanceiro.dto.ResumoMovimentoFinaneiro;
 import br.com.apidigitalfinanceiro.services.ReporMovimentoFinanceiroService;
@@ -38,7 +40,7 @@ public class ReporMovimentoFinanceiroController implements Serializable {
 	public ResponseEntity<DemosntrativoFinanceiroDto> demonstrativoatual() {
 		return ResponseEntity.ok(service.demonstrativoatual());
 	}
-	
+
 	/**
 	 * @param exercicio
 	 * @param periodo
@@ -79,9 +81,11 @@ public class ReporMovimentoFinanceiroController implements Serializable {
 
 		return ResponseEntity.ok(service.ViewPdf());
 	}
-	@PreAuthorize("hasAnyRole('ROLE_ADMG' , 'ROLE_OPF' , 'ROLE_ADMEST'  )")
+
+	
+	@PreAuthorize("hasAnyRole('ROLE_ADMG' , 'ROLE_OPF' , 'ROLE_ADMEST'  )")	
 	@RequestMapping(value = "/printdemonstrativoperiodo", method = RequestMethod.GET)
-	public ResponseEntity<byte[]> viewpdf(	@RequestParam(value = "exercico", defaultValue = "") int ano,
+	public ResponseEntity<byte[]> viewpdf(@RequestParam(value = "exercico", defaultValue = "") int ano,
 			@RequestParam(value = "mes", defaultValue = "") int mes) throws JRException, IOException {
 
 		return ResponseEntity.ok(service.ViewPdf(ano, mes));
@@ -103,5 +107,11 @@ public class ReporMovimentoFinanceiroController implements Serializable {
 		return ResponseEntity.ok(service.viewpddemonstrativosintetico(exercicio));
 	}
 
- 
+	@PreAuthorize("hasAnyRole('ROLE_ADMG' , 'ROLE_OPF' , 'ROLE_ADMEST'  )")
+	@RequestMapping(value = "/livrocaixa", method = RequestMethod.GET)
+	public ResponseEntity<LivroCaixaDto> livrocaixa(@RequestParam(value = "datafim") Date datafim,
+			@RequestParam(value = "datainicio") Date datainicio) throws JRException, IOException {
+
+		return ResponseEntity.ok(service.caixaDto(datainicio, datafim));
+	}
 }

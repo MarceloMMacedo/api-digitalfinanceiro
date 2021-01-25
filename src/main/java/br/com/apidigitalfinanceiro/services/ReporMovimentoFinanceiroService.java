@@ -15,9 +15,11 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Service;
 
+import br.com.apidigitalfinanceiro.domain.Fatura;
 import br.com.apidigitalfinanceiro.dto.DemosntrativoFinanceiroDto;
 import br.com.apidigitalfinanceiro.dto.ItemDemosntrativoFinanceiroDto;
 import br.com.apidigitalfinanceiro.dto.ItemMesDemostrativoDTO;
+import br.com.apidigitalfinanceiro.dto.LivroCaixaDto;
 import br.com.apidigitalfinanceiro.dto.ReportDemostrativoFinancerio;
 import br.com.apidigitalfinanceiro.dto.ResumoMovimentoFinaneiro;
 import br.com.apidigitalfinanceiro.enuns.StatusActiv;
@@ -167,13 +169,10 @@ public class ReporMovimentoFinanceiroService implements Serializable {
 				ItemDemosntrativoFinanceiroDto e = new ItemDemosntrativoFinanceiroDto(obj[0], obj[1], obj[3], obj[4]);
 				realizados += e.getValorrealizado();
 				entradas.add(e);
-			}else {
-				futuros += (double)obj[3];
+			} else {
+				futuros += (double) obj[3];
 			}
 		}
-
-		 
-	
 
 		// entradasarealizar a Realizar
 		List<ItemDemosntrativoFinanceiroDto> movimentosaberto = new ArrayList<>();
@@ -192,12 +191,13 @@ public class ReporMovimentoFinanceiroService implements Serializable {
 		List<ItemDemosntrativoFinanceiroDto> entradarealizadosos = new ArrayList<>();
 		objects = faturaRepository.faturasdemosntrativofinanceiro(tipomovimento_id, ano, mes);
 		for (Object[] obj : objects) {
-			if ((Integer) obj[2] == StatusActiv.QUIT.getId()) {ItemDemosntrativoFinanceiroDto e = new ItemDemosntrativoFinanceiroDto(obj[0], obj[1], obj[2], obj[3],
-					obj[4]);
-			entradarealizadosos.add(e);
-			realizados += e.getValorrealizado();
-			}else {
-				futuros += (double)obj[3];
+			if ((Integer) obj[2] == StatusActiv.QUIT.getId()) {
+				ItemDemosntrativoFinanceiroDto e = new ItemDemosntrativoFinanceiroDto(obj[0], obj[1], obj[2], obj[3],
+						obj[4]);
+				entradarealizadosos.add(e);
+				realizados += e.getValorrealizado();
+			} else {
+				futuros += (double) obj[3];
 			}
 		}
 		for (ItemDemosntrativoFinanceiroDto itemDemosntrativoFinanceiroDto : entradarealizadosos) {
@@ -218,12 +218,11 @@ public class ReporMovimentoFinanceiroService implements Serializable {
 				ItemDemosntrativoFinanceiroDto e = new ItemDemosntrativoFinanceiroDto(obj[0], obj[1], obj[3], obj[4]);
 				realizados += e.getValorrealizado();
 				saidas.add(e);
-			}else {
-				futuros+=(double) obj[3];
+			} else {
+				futuros += (double) obj[3];
 			}
 		}
-		
-		 
+
 		demonstrativo.setSaidasRealizadas(realizados);
 
 		demonstrativo.setSaidasFuturas(futuros);
@@ -419,4 +418,29 @@ public class ReporMovimentoFinanceiroService implements Serializable {
 
 		return setMes;
 	}
+
+	public LivroCaixaDto caixaDto(Date datainicio, Date datafim) {
+		List<ItemDemosntrativoFinanceiroDto> movimentos = new ArrayList<>();
+		
+		double entradas = 0;
+		double saidas = 0;
+		List<Fatura> faturas = faturaRepository.livroCaixa(datainicio, datafim, StatusActiv.QUIT.getDescricao());
+		ItemDemosntrativoFinanceiroDto dto;
+		try {
+			for (Fatura fatura : faturas) {
+				dto = new ItemDemosntrativoFinanceiroDto(fatura);
+				movimentos.add(dto);
+				if (fatura.getTipomovimento().equals(TipoMovimentoEnum.Saida)) {
+					entradas += fatura.getTotal();
+				} else
+					saidas += fatura.getTotal();
+				;
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		LivroCaixaDto caixaDto = new LivroCaixaDto(movimentos, datainicio, datafim, entradas, saidas);
+		return caixaDto;
+	}
+
 }

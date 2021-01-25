@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="demonstrativo" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bc489e74-7d63-4e0d-883c-7cb7bb1e8595">
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="445"/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="541"/>
+	<parameter name="company" class="java.util.List"/>
+	<parameter name="heard" class="java.lang.String"/>
+	<parameter name="Empresa" class="br.com.apidigitalfinanceiro.domain.Empresas"/>
+	<parameter name="Parameter2" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="jul" class="br.com.apidigitalfinanceiro.dto.ItemMesDemostrativoDTO">
+		<fieldDescription><![CDATA[jul]]></fieldDescription>
+	</field>
+	<field name="jun" class="br.com.apidigitalfinanceiro.dto.ItemMesDemostrativoDTO">
+		<fieldDescription><![CDATA[jun]]></fieldDescription>
+	</field>
+	<field name="set" class="br.com.apidigitalfinanceiro.dto.ItemMesDemostrativoDTO">
+		<fieldDescription><![CDATA[set]]></fieldDescription>
+	</field>
+	<field name="ago" class="br.com.apidigitalfinanceiro.dto.ItemMesDemostrativoDTO">
+		<fieldDescription><![CDATA[ago]]></fieldDescription>
+	</field>
+	<field name="exercicio" class="java.lang.Integer">
+		<fieldDescription><![CDATA[exercicio]]></fieldDescription>
+	</field>
+	<field name="out" class="br.com.apidigitalfinanceiro.dto.ItemMesDemostrativoDTO">
+		<fieldDescription><![CDATA[out]]></fieldDescription>
+	</field>
+	<field name="abr" class="br.com.apidigitalfinanceiro.dto.ItemMesDemostrativoDTO">
+		<fieldDescription><![CDATA[abr]]></fieldDescription>
+	</field>
+	<field name="mai" class="br.com.apidigitalfinanceiro.dto.ItemMesDemostrativoDTO">
+		<fieldDescription><![CDATA[mai]]></fieldDescription>
+	</field>
+	<field name="nov" class="br.com.apidigitalfinanceiro.dto.ItemMesDemostrativoDTO">
+		<fieldDescription><![CDATA[nov]]></fieldDescription>
+	</field>
+	<field name="fev" class="br.com.apidigitalfinanceiro.dto.ItemMesDemostrativoDTO">
+		<fieldDescription><![CDATA[fev]]></fieldDescription>
+	</field>
+	<field name="jan" class="br.com.apidigitalfinanceiro.dto.ItemMesDemostrativoDTO">
+		<fieldDescription><![CDATA[jan]]></fieldDescription>
+	</field>
+	<field name="dez" class="br.com.apidigitalfinanceiro.dto.ItemMesDemostrativoDTO">
+		<fieldDescription><![CDATA[dez]]></fieldDescription>
+	</field>
+	<field name="mes" class="java.lang.Integer">
+		<fieldDescription><![CDATA[mes]]></fieldDescription>
+	</field>
+	<field name="mar" class="br.com.apidigitalfinanceiro.dto.ItemMesDemostrativoDTO">
+		<fieldDescription><![CDATA[mar]]></fieldDescription>
+	</field>
+	<variable name="totalSaidasQuit" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{jul}.getValoresSaidaQuit()+$F{jun}.getValoresSaidaQuit()+$F{set}.getValoresSaidaQuit()+$F{ago}.getValoresSaidaQuit()+$F{out}.getValoresSaidaQuit()+$F{abr}.getValoresSaidaQuit()+$F{mai}.getValoresSaidaQuit()+$F{nov}.getValoresSaidaQuit()+$F{fev}.getValoresSaidaQuit()+$F{jan}.getValoresSaidaQuit()+$F{dez}.getValoresSaidaQuit()+$F{mar}.getValoresSaidaQuit()]]></variableExpression>
+	</variable>
+	<variable name="totalEntradasQui" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{jul}.getValoresEntradaQuit()+$F{jun}.getValoresEntradaQuit()+$F{set}.getValoresEntradaQuit()+$F{ago}.getValoresEntradaQuit()+$F{out}.getValoresEntradaQuit()+$F{abr}.getValoresEntradaQuit()+$F{mai}.getValoresEntradaQuit()+$F{nov}.getValoresEntradaQuit()+$F{fev}.getValoresEntradaQuit()+$F{jan}.getValoresEntradaQuit()+$F{dez}.getValoresEntradaQuit()+$F{mar}.getValoresEntradaQuit()]]></variableExpression>
+	</variable>
+	<variable name="totalSaidasAberto" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{jul}.getValoresSaidaAberto()+$F{jun}.getValoresSaidaAberto()+$F{set}.getValoresSaidaAberto()+$F{ago}.getValoresSaidaAberto()+$F{out}.getValoresSaidaAberto()+$F{abr}.getValoresSaidaAberto()+$F{mai}.getValoresSaidaAberto()+$F{nov}.getValoresSaidaAberto()+$F{fev}.getValoresSaidaAberto()+$F{jan}.getValoresSaidaAberto()+$F{dez}.getValoresSaidaAberto()+$F{mar}.getValoresSaidaAberto()]]></variableExpression>
+	</variable>
+	<variable name="totalEntradasAberto" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{jul}.getValoresEntradaAberto()+$F{jun}.getValoresEntradaAberto()+$F{set}.getValoresEntradaAberto()+$F{ago}.getValoresEntradaAberto()+$F{out}.getValoresEntradaAberto()+$F{abr}.getValoresEntradaAberto()+$F{mai}.getValoresEntradaAberto()+$F{nov}.getValoresEntradaAberto()+$F{fev}.getValoresEntradaAberto()+$F{jan}.getValoresEntradaAberto()+$F{dez}.getValoresEntradaAberto()+$F{mar}.getValoresEntradaAberto()]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="87" splitType="Stretch">
+			<image hAlign="Center" vAlign="Middle" onErrorType="Blank">
+				<reportElement x="10" y="11" width="70" height="62" uuid="00c8600a-8e51-4be2-8a4d-797a98e0f350"/>
+				<imageExpression><![CDATA[$P{Empresa}.getAvatarView()]]></imageExpression>
+			</image>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="false">
+				<reportElement x="87" y="8" width="363" height="21" uuid="026c1812-df63-480a-89d6-8e9a3305811e"/>
+				<textElement textAlignment="Left">
+					<font fontName="SansSerif" size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Empresa}.getName()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="410" y="30" width="10" height="11" uuid="b81b457a-5712-4df5-bb88-ceee4fcffa4f">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Nº]]></text>
+			</staticText>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="87" y="30" width="323" height="11" uuid="1a246d27-0ce3-46f0-a1ff-6df6d82a8f12">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Empresa}.getEnderecoPrincipal().getStreet()]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="420" y="30" width="30" height="11" uuid="1fe6e5bc-58be-482b-9926-794f37130e61">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Empresa}.getEnderecoPrincipal().getNro()]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" pattern="" isBlankWhenNull="true">
+				<reportElement x="87" y="43" width="53" height="11" uuid="bc3ec194-5b9c-484d-8e81-353b471291ff">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Empresa}.getEnderecoPrincipal().getZipCode()]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="140" y="43" width="80" height="11" uuid="11a52474-cd4d-4263-89d7-56d2e6f8632a">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Empresa}.getEnderecoPrincipal().getBairro()]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="220" y="43" width="230" height="11" uuid="d1c504f6-b1a2-4b88-839c-92bf2ea2d679">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Empresa}.getEnderecoPrincipal().getCity()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="87" y="65" width="22" height="11" uuid="1a608001-2348-4c87-a520-d5a03346e643">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CNPJ:]]></text>
+			</staticText>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="109" y="65" width="80" height="11" uuid="3f3aa0e2-1dae-4861-8678-d9c6dddc88e8">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Empresa}.getCpfOnCnpj()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="88" y="54" width="43" height="11" uuid="5b5b92c0-91bb-491f-af13-483e37066390">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Telefones:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="210" y="54" width="10" height="11" uuid="63257996-026f-4071-9087-e5700266728e">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[/]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="ElementGroupHeight" x="197" y="65" width="28" height="11" uuid="1d936c90-439c-4275-8926-d3ce827dfd6e">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Email:]]></text>
+			</staticText>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="225" y="65" width="225" height="11" uuid="1a25a541-8bf2-4283-b20c-47b3577557b5">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Empresa}.getEmail()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="47" splitType="Stretch">
+			<textField>
+				<reportElement x="30" y="0" width="290" height="30" uuid="82ed9927-6c31-42aa-9604-afb773459e11"/>
+				<textElement>
+					<font size="22"/>
+				</textElement>
+				<textFieldExpression><![CDATA[Livro Caixa]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="40" splitType="Stretch"/>
+	</detail>
+	<summary>
+		<band height="79" splitType="Stretch"/>
+	</summary>
+</jasperReport>
