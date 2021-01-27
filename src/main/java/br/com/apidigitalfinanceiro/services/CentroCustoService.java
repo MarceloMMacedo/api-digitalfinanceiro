@@ -39,7 +39,7 @@ public class CentroCustoService extends ServiceImpl<CentroCusto> {
 		return repo;
 	}
 
-	@Override
+	/*@Override
 	public byte[] ViewPdf() throws JRException, IOException {
 		Map<String, Object> parameters = new HashMap<String, Object>();
 		List<?> source = new ArrayList<>();
@@ -47,5 +47,5 @@ public class CentroCustoService extends ServiceImpl<CentroCusto> {
 		String templates = res.getURI().getPath() + "/centrocusto.jrxml";
 		source = centroCustoRepository.findAll();
 		return filesService.ViewPdf(parameters, source, templates);
-	}
+	}*/
 }

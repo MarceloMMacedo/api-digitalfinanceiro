@@ -81,7 +81,7 @@ public class ReporMovimentoFinanceiroController implements Serializable {
 
 		return ResponseEntity.ok(service.ViewPdf());
 	}
-
+ 
 	
 	@PreAuthorize("hasAnyRole('ROLE_ADMG' , 'ROLE_OPF' , 'ROLE_ADMEST'  )")	
 	@RequestMapping(value = "/printdemonstrativoperiodo", method = RequestMethod.GET)
@@ -91,7 +91,7 @@ public class ReporMovimentoFinanceiroController implements Serializable {
 		return ResponseEntity.ok(service.ViewPdf(ano, mes));
 	}
 
-	@PreAuthorize("hasAnyRole('ROLE_ADMG' , 'ROLE_OPF' , 'ROLE_ADMEST'  )")
+ 	@PreAuthorize("hasAnyRole('ROLE_ADMG' , 'ROLE_OPF' , 'ROLE_ADMEST'  )")
 	@RequestMapping(value = "/viewpddemonstrativosintetico", method = RequestMethod.GET)
 	public ResponseEntity<byte[]> viewpddemonstrativosintetico() throws JRException, IOException {
 
@@ -106,12 +106,12 @@ public class ReporMovimentoFinanceiroController implements Serializable {
 
 		return ResponseEntity.ok(service.viewpddemonstrativosintetico(exercicio));
 	}
-
+ 
 	@PreAuthorize("hasAnyRole('ROLE_ADMG' , 'ROLE_OPF' , 'ROLE_ADMEST'  )")
 	@RequestMapping(value = "/livrocaixa", method = RequestMethod.GET)
-	public ResponseEntity<LivroCaixaDto> livrocaixa(@RequestParam(value = "datafim") Date datafim,
+	public ResponseEntity<byte[]> livrocaixa(@RequestParam(value = "datafim") Date datafim,
 			@RequestParam(value = "datainicio") Date datainicio) throws JRException, IOException {
 
-		return ResponseEntity.ok(service.caixaDto(datainicio, datafim));
+		return ResponseEntity.ok(service.ViewPdflivrocaixa(datainicio, datafim));
 	}
 }

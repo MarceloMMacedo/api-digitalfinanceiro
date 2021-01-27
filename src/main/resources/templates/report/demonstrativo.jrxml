@@ -62,133 +62,16 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="76" splitType="Stretch">
-			<image hAlign="Center" vAlign="Middle" onErrorType="Blank">
-				<reportElement x="10" y="11" width="70" height="62" uuid="17882102-f70a-4402-966b-e0d04c765e71"/>
-				<imageExpression><![CDATA[$P{Empresa}.getAvatarView()]]></imageExpression>
-			</image>
-			<textField textAdjust="StretchHeight" isBlankWhenNull="false">
-				<reportElement x="87" y="8" width="363" height="21" uuid="c6bf8703-f9cd-4646-b712-952b3a90d66a"/>
-				<textElement textAlignment="Left">
-					<font fontName="SansSerif" size="16" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{Empresa}.getName()]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="410" y="30" width="10" height="11" uuid="71cc780d-41c8-4356-8e34-b766ced39ada">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[Nº]]></text>
-			</staticText>
-			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement x="87" y="30" width="323" height="11" uuid="7960663c-7cd9-4946-851c-52b4c43aeef5">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{Empresa}.getEnderecoPrincipal().getStreet()]]></textFieldExpression>
-			</textField>
-			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement x="420" y="30" width="30" height="11" uuid="ed1bf00d-5d06-47b2-b7da-ecf3da49d331">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{Empresa}.getEnderecoPrincipal().getNro()]]></textFieldExpression>
-			</textField>
-			<textField textAdjust="StretchHeight" pattern="" isBlankWhenNull="true">
-				<reportElement x="87" y="43" width="53" height="11" uuid="091e69a0-d030-4ab9-95ae-e4cfa9030029">
-					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{Empresa}.getEnderecoPrincipal().getZipCode()]]></textFieldExpression>
-			</textField>
-			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement x="140" y="43" width="80" height="11" uuid="4db1204e-d6df-43f9-8e05-c7bbe903dff2">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{Empresa}.getEnderecoPrincipal().getBairro()]]></textFieldExpression>
-			</textField>
-			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement x="220" y="43" width="230" height="11" uuid="58e6fb59-1a9b-46bd-b3e9-6fd89820e8d8">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{Empresa}.getEnderecoPrincipal().getCity()]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="87" y="65" width="22" height="11" uuid="3daa2bdc-a96c-43b1-b254-c021156a0803">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[CNPJ:]]></text>
-			</staticText>
-			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement x="109" y="65" width="80" height="11" uuid="07b15bb0-0fc1-4582-ad43-03f4ea5bd5a0">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement verticalAlignment="Middle">
-					<font size="7"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{Empresa}.getCpfOnCnpj()]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement positionType="FixRelativeToBottom" x="88" y="54" width="43" height="11" uuid="419d074b-ebbe-41e7-aca3-722ed46b8d4a">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
-				</reportElement>
-				<textElement verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[Telefones:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="210" y="54" width="10" height="11" uuid="e1fe8d7b-dafc-4a18-9ce1-8755c17ec6a2">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[/]]></text>
-			</staticText>
-			<staticText>
-				<reportElement stretchType="ElementGroupHeight" x="197" y="65" width="28" height="11" uuid="c572eee7-d8b1-4fd3-aa94-fa6306d318e6">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
-				</reportElement>
-				<textElement verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[Email:]]></text>
-			</staticText>
-			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement x="225" y="65" width="225" height="11" uuid="c45b9359-79fe-46ff-a287-1d0b4b734cf2">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{Empresa}.getEmail()]]></textFieldExpression>
-			</textField>
+		<band height="20" splitType="Stretch">
+			<subreport>
+				<reportElement x="4" y="6" width="375" height="14" uuid="abdd1d5d-20eb-4c19-b6a1-6b1bfc2ad573"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{company})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{heard}]]></subreportExpression>
+			</subreport>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="30" splitType="Stretch">
+		<band height="31" splitType="Stretch">
 			<staticText>
 				<reportElement x="20" y="10" width="210" height="20" uuid="7ec3d6e1-0460-4bf0-b52b-30cef9e56766"/>
 				<textElement verticalAlignment="Middle">
@@ -209,7 +92,7 @@
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="93">
+		<band height="79">
 			<property name="com.jaspersoft.studio.layout"/>
 			<staticText>
 				<reportElement x="280" y="0" width="100" height="30" uuid="e0b54557-165d-49d2-a389-8240328254de"/>
@@ -320,14 +203,32 @@
 				<text><![CDATA[Valores Pagos]]></text>
 			</staticText>
 			<subreport>
-				<reportElement x="5" y="53" width="246" height="10" uuid="1fea0a26-7cf4-4cec-abe1-aff33c5f0424"/>
-				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{entradas})]]></dataSourceExpression>
+				<reportElement x="5" y="48" width="246" height="10" uuid="1fea0a26-7cf4-4cec-abe1-aff33c5f0424"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{entradarealizados})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{pathentrada}]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="280" y="48" width="246" height="10" uuid="d6c0b47f-f128-4897-8abf-ea17ba48943b"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{saidarealizados})]]></dataSourceExpression>
 				<subreportExpression><![CDATA[$P{pathentrada}]]></subreportExpression>
 			</subreport>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="10"/>
+		<band height="16">
+			<subreport>
+				<reportElement x="0" y="5" width="517" height="10" uuid="18eb3972-eca2-42d5-b856-f1985675aaa5"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{movimentosAberto})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{PathMovimento}]]></subreportExpression>
+			</subreport>
+			<line>
+				<reportElement x="0" y="0" width="540" height="1" uuid="abfd5def-3133-432c-8b76-dc8acbe5e98f">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+			</line>
+		</band>
 	</detail>
 	<summary>
 		<band height="95" splitType="Stretch">

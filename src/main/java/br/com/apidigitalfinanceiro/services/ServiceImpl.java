@@ -20,6 +20,7 @@ import br.com.apidigitalfinanceiro.config.security.UserSS;
 import br.com.apidigitalfinanceiro.config.services.UserService;
 import br.com.apidigitalfinanceiro.domain.intefaces.BaseEntity;
 import br.com.apidigitalfinanceiro.dto.BaseDto;
+import br.com.apidigitalfinanceiro.dto.DemosntrativoFinanceiroDto;
 import br.com.apidigitalfinanceiro.service.security.exceptions.AuthorizationException;
 import br.com.apidigitalfinanceiro.service.security.exceptions.DataIntegrityException;
 import br.com.apidigitalfinanceiro.utils.FilesService;
@@ -282,7 +283,7 @@ public class ServiceImpl<T extends BaseEntity> implements ServicesInterfaces<T>,
 	@Override
 	public byte[] ViewPdf() throws JRException, IOException {
 		Map<String, Object> parameters = new HashMap<String, Object>();
-		List<?> source = new ArrayList<>();
+		List<DemosntrativoFinanceiroDto> source = new ArrayList<>();
 		String templates = "";
 		
 		return filesService.ViewPdf(parameters, source, templates);

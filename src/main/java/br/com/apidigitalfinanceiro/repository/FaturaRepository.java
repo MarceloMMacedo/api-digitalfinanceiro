@@ -77,7 +77,7 @@ public interface FaturaRepository extends JpaRepository<Fatura, Integer> {
 	double totalmovimentoFinanceiromes(Integer exercicio, Integer mes, String status, Integer id, String tipoMovimento);
 
 	@Transactional(readOnly = true)
-	@Query("SELECT f from Fatura f where (dataQuitacao between :datainicio and :datafim) and f.status= :status")
+	@Query("SELECT f from Fatura f where (dataQuitacao between :datainicio and :datafim) and f.status= :status group by f.id")
 	List<Fatura> livroCaixa(@Param("datainicio") Date datainicio, @Param("datafim") Date datafim, @Param("status") String status);
 	// DemosntrativoFinanceiro
 

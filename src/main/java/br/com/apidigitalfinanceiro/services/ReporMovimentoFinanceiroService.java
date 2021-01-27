@@ -257,10 +257,10 @@ public class ReporMovimentoFinanceiroService implements Serializable {
 
 	}
 
-	public byte[] ViewPdf() throws JRException, IOException {
+	 public byte[] ViewPdf() throws JRException, IOException {
 		Map<String, Object> parameters = new HashMap<String, Object>();
 		String s = "";
-		Resource res = resourceLoader.getResource("classpath:/templates/report/demonstrativofinanceiro/");
+		Resource res = resourceLoader.getResource("classpath:templates/report/demonstrativofinanceiro/");
 		try {
 			s = res.getFile().getAbsolutePath();
 			System.out.println(res.getURI());
@@ -280,11 +280,11 @@ public class ReporMovimentoFinanceiroService implements Serializable {
 		source = list;
 		return filesService.ViewPdf(parameters, source, templates);
 	}
-
+ 
 	public byte[] ViewPdf(int ano, int mes) throws JRException, IOException {
 		Map<String, Object> parameters = new HashMap<String, Object>();
-		String s = "";
-		Resource res = resourceLoader.getResource("classpath:/templates/report/demonstrativofinanceiro/");
+		/*String s = "";
+		Resource res = resourceLoader.getResource("classpath:templates/report/demonstrativofinanceiro/");
 		try {
 			s = res.getFile().getAbsolutePath();
 			System.out.println(res.getFile().getAbsolutePath());
@@ -293,38 +293,34 @@ public class ReporMovimentoFinanceiroService implements Serializable {
 			e.printStackTrace();
 		}
 
-		DemosntrativoFinanceiroDto demonstrativoatual = demonstrativoatual(ano, mes);
-
+//
 		System.out.println(s + "/entradas.jasper");
 		parameters.put("entradas", demonstrativoatual.getEntradarealizados());
 		parameters.put("pathentrada", s + "/entradas.jasper");
 		parameters.put("pathsaida", s + "/saidas.jasper");
 		parameters.put("PathMovimento", s + "/movimentoaberto.jasper");
+*/
+		
+		parameters.put("pathentrada", filesService.loadPathJasperFile( "resumodemonstrativo")); 
 
+		parameters.put("PathMovimento",filesService.loadPathJasperFile( "movimentoaberto"));
+		
+		DemosntrativoFinanceiroDto demonstrativoatual = demonstrativoatual(ano, mes);
 		List<DemosntrativoFinanceiroDto> source = new ArrayList<DemosntrativoFinanceiroDto>();
 
-		String templates = "classpath:/templates/report/demonstrativofinanceiro/demonstrativo.jrxml";
+		String templates = "demonstrativo";
 		List<DemosntrativoFinanceiroDto> list = new ArrayList<DemosntrativoFinanceiroDto>();
 		list.add(demonstrativoatual);
 		source = list;
 		return filesService.ViewPdf(parameters, source, templates);
 	}
-
+ 
 	public byte[] viewpddemonstrativosintetico() throws JRException, IOException {
 		Map<String, Object> parameters = new HashMap<String, Object>();
-		String s = "";
-		Resource res = resourceLoader.getResource("classpath:/templates/report/demonstrativofinanceiro/");
-		try {
-			s = res.getFile().getAbsolutePath();
-			System.out.println(res.getURL().getPath());
-		} catch (IOException e) {
-
-			e.printStackTrace();
-		}
-
+		 
 		List<?> source = new ArrayList<>();
 
-		String templates = res.getFile().getAbsolutePath() + "/resumodemonstrativosintetico.jrxml";
+		String templates = "resumodemonstrativosintetico";
 		List<ReportDemostrativoFinancerio> list = new LinkedList<ReportDemostrativoFinancerio>();
 		list = (reportdemostrativofinancerio());
 		source = list;
@@ -334,18 +330,11 @@ public class ReporMovimentoFinanceiroService implements Serializable {
 	public byte[] viewpddemonstrativosintetico(int exercicio) throws JRException, IOException {
 		Map<String, Object> parameters = new HashMap<String, Object>();
 		String s = "";
-		Resource res = resourceLoader.getResource("classpath:/templates/report/demonstrativofinanceiro/");
-		try {
-			s = res.getFile().getAbsolutePath();
-			System.out.println(res.getURI());
-		} catch (IOException e) {
-
-			e.printStackTrace();
-		}
+		 
 
 		List<?> source = new ArrayList<>();
 
-		String templates = res.getFile().getAbsolutePath() + "/resumodemonstrativosintetico.jasper";
+		String templates = "resumodemonstrativosintetico";
 		List<ReportDemostrativoFinancerio> list = new LinkedList<ReportDemostrativoFinancerio>();
 		list = (reportdemostrativofinancerio(exercicio));
 		source = list;
@@ -431,9 +420,9 @@ public class ReporMovimentoFinanceiroService implements Serializable {
 				dto = new ItemDemosntrativoFinanceiroDto(fatura);
 				movimentos.add(dto);
 				if (fatura.getTipomovimento().equals(TipoMovimentoEnum.Saida)) {
-					entradas += fatura.getTotal();
-				} else
 					saidas += fatura.getTotal();
+				} else
+						entradas += fatura.getTotal();
 				;
 			}
 		} catch (Exception e) {
@@ -443,4 +432,16 @@ public class ReporMovimentoFinanceiroService implements Serializable {
 		return caixaDto;
 	}
 
+	 public byte[] ViewPdflivrocaixa(Date datainicio, Date datafim) throws JRException, IOException {
+			Map<String, Object> parameters = new HashMap<String, Object>();
+			String s = "";
+			parameters.put("PathMovimento",filesService.loadPathJasperFile( "movimentolivrocaixa"));
+			
+
+			String templates =   "livrocaixa";
+			List<LivroCaixaDto> list = new ArrayList<LivroCaixaDto>();
+			list.add(caixaDto(datainicio, datafim));
+			 
+			return filesService.ViewPdf(parameters, list, templates);
+		}
 }
