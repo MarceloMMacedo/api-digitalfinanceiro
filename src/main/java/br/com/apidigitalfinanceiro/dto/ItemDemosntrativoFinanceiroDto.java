@@ -74,9 +74,9 @@ public class ItemDemosntrativoFinanceiroDto implements Serializable {
 		this.id = f.getId();
 		this.movimentofinanceiro = f.getHistorico().getName();
 		this.descricaofatura = f.getName();
-		if (f.getTipomovimento().equals(TipoMovimentoEnum.Saida)) {
+		if (f.getTipomovimento().equals(TipoMovimentoEnum.Saida.getDescricao())) {
 			this.valorrealizar = -1 * f.getTotal();
-		} 
+		}  else this.valorrealizar =  f.getTotal();
 		this.moeda = f.getFormapagamento();
 		this.banco = f.getBancopagador().getBanco();
 		this.data = f.getDataQuitacao();

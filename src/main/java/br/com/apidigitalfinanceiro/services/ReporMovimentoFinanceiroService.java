@@ -419,7 +419,7 @@ public class ReporMovimentoFinanceiroService implements Serializable {
 			for (Fatura fatura : faturas) {
 				dto = new ItemDemosntrativoFinanceiroDto(fatura);
 				movimentos.add(dto);
-				if (fatura.getTipomovimento().equals(TipoMovimentoEnum.Saida)) {
+				if (fatura.getTipomovimento().equals(TipoMovimentoEnum.Saida.getDescricao())) {
 					saidas += fatura.getTotal();
 				} else
 						entradas += fatura.getTotal();

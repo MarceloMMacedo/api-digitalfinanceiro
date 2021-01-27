@@ -142,7 +142,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{valorrealizado}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{valorrealizar}]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
 				<reportElement x="256" y="0" width="60" height="15" uuid="c5fc21dd-2b2c-4ae7-8095-431332722b5f">
