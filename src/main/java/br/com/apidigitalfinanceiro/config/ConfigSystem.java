@@ -15,6 +15,7 @@ import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.storage.Storage;
 import com.google.cloud.storage.StorageOptions;
 
+import br.com.apidigitalfinanceiro.mail.mail.JasperReportsService;
 import br.com.apidigitalfinanceiro.utils.FilesService;
 import br.com.apidigitalfinanceiro.utils.UtilFile;
 @Configuration
@@ -29,6 +30,8 @@ public class ConfigSystem {
 //	 @Autowired(required=true)
 //		private GenTable genegationTable;
 //	 
+	 
+	
 	@Bean
 	public boolean instantiateDatabase()  {
 //		GenTable genegationTable=new GenTable();
@@ -63,26 +66,6 @@ public class ConfigSystem {
 		 return new UtilFile();
 	} 
 	
-	/*@Bean
-	@Primary
-	ObjectMapper objectMapper() {
-	  Jackson2ObjectMapperBuilder builder = new Jackson2ObjectMapperBuilder();
-	  AnnotationIntrospector annotationIntrospector = new JacksonAnnotationIntrospector() {	  
-		private static final long serialVersionUID = 1L;
-
-		@Override
-	    protected boolean _isIgnorable(Annotated a) {
-	      boolean ignorable = super._isIgnorable(a);
-	      if (ignorable) {
-	        Transient aTransient = a.getAnnotation(Transient.class);
-	        JsonIgnore jsonIgnore = a.getAnnotation(JsonIgnore.class);
-
-	        return aTransient == null || jsonIgnore != null && jsonIgnore.value();
-	      }
-	      return false;
-	    }
-	  };
-	  builder.annotationIntrospector(annotationIntrospector);
-	  return builder.build();
-	}*/
+ 
+ 	 
 }
