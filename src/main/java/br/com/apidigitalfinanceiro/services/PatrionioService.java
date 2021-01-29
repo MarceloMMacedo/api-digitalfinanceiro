@@ -19,6 +19,7 @@ import br.com.apidigitalfinanceiro.domain.Patrimonio;
 import br.com.apidigitalfinanceiro.dto.BaseDto;
 import br.com.apidigitalfinanceiro.enuns.StatusActiv;
 import br.com.apidigitalfinanceiro.mail.mail.HtmlEmailService;
+import br.com.apidigitalfinanceiro.mail.storage.EmailProperties;
 import br.com.apidigitalfinanceiro.repository.ModeloRepository;
 import br.com.apidigitalfinanceiro.repository.PatrimonioRepository;
 import br.com.apidigitalfinanceiro.service.security.exceptions.AuthorizationException;
@@ -125,7 +126,15 @@ public class PatrionioService extends ServiceImpl<Patrimonio> {
 	public byte[] ViewPdf() throws JRException, IOException {
 		Map<String, Object> parameters = new HashMap<String, Object>();
 		List<?> source = new ArrayList<>();
-		String templates = "";
-		return super.ViewPdf();
+		String templates = "centrocusto";
+		return super.ViewPdf(parameters, findAll(), templates);
+	}
+
+	public void sendemailreport(EmailProperties properties) {
+		UserSS user = UserService.authenticated();
+		Map<String, Object> parameters = new HashMap<String, Object>();
+		properties.setFrom(user.getEmail());
+		String templates = "centrocusto";
+		htmlEmailService.sendemailreport(properties, templates, parameters, findAll());
 	}
 }

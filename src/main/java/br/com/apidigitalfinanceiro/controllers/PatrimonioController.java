@@ -7,7 +7,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,8 +19,9 @@ import org.springframework.web.multipart.MultipartFile;
 import br.com.apidigitalfinanceiro.domain.Patrimonio;
 import br.com.apidigitalfinanceiro.dto.BaseDto;
 import br.com.apidigitalfinanceiro.enuns.TipoPatrimonioEnum;
+import br.com.apidigitalfinanceiro.mail.storage.EmailProperties;
 import br.com.apidigitalfinanceiro.services.PatrionioService;
-import br.com.apidigitalfinanceiro.services.ServiceImpl; 
+import br.com.apidigitalfinanceiro.services.ServiceImpl;
 
 @RestController
 @RequestMapping(value = "/patrimonios")
@@ -60,4 +63,11 @@ public class PatrimonioController extends ControllerImp<Patrimonio> {
 		return ResponseEntity.ok(baseDto);
 	}
 
+	@PreAuthorize("hasAnyRole('ROLE_ADMG' , 'ROLE_OPF' , 'ROLE_ADMEST'  )")
+	@RequestMapping(value = "/sendmail", method = RequestMethod.PUT)
+	public ResponseEntity<Void> sendmail(@RequestBody EmailProperties properties ) {
+
+	 service.sendemailreport(properties);
+		return ResponseEntity.noContent().build();
+	}
 }

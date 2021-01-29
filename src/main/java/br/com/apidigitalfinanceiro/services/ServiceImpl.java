@@ -23,6 +23,7 @@ import br.com.apidigitalfinanceiro.dto.BaseDto;
 import br.com.apidigitalfinanceiro.dto.DemosntrativoFinanceiroDto;
 import br.com.apidigitalfinanceiro.mail.mail.HtmlEmailService;
 import br.com.apidigitalfinanceiro.mail.mail.JasperReportsService;
+import br.com.apidigitalfinanceiro.mail.storage.EmailProperties;
 import br.com.apidigitalfinanceiro.service.security.exceptions.AuthorizationException;
 import br.com.apidigitalfinanceiro.service.security.exceptions.DataIntegrityException;
 import br.com.apidigitalfinanceiro.utils.FilesService;
@@ -48,7 +49,7 @@ public class ServiceImpl<T extends BaseEntity> implements ServicesInterfaces<T>,
 
 	@Autowired
 	JasperReportsService jasperReportsService;
-	
+
 	public JpaRepository<T, Integer> repo() {
 		return null;
 	}
@@ -293,7 +294,18 @@ public class ServiceImpl<T extends BaseEntity> implements ServicesInterfaces<T>,
 		Map<String, Object> parameters = new HashMap<String, Object>();
 		List<?> source = new ArrayList<>();
 		String templates = "";
-		
+
 		return filesService.ViewPdf(parameters, source, templates);
+	}
+
+	public byte[] ViewPdf(Map<String, Object> parameters, List<?> source, String templates)
+			throws JRException, IOException {
+
+		return filesService.ViewPdf(parameters, source, templates);
+	}
+
+
+	public   void sendemailreport(EmailProperties properties) {
+		
 	}
 }
