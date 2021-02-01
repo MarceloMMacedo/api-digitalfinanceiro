@@ -66,13 +66,12 @@ import net.sf.jasperreports.engine.util.JRSaver;
 @Data
 @RequiredArgsConstructor
 public class HtmlEmailService implements EmailService {
-
-	private final JavaMailSender javaMail;
+ 
 
 	private EmailProperties properties;
 
 	@Autowired
-	private JavaMailSender javaMailSender;
+	private JavaMailSender javaMail;
 
 	@Autowired
 	FileSystemStorageService storageService;
@@ -91,7 +90,7 @@ public class HtmlEmailService implements EmailService {
 	 */
 	@Override
 	public void sendHtmlEmail(EmailProperties properties) {
-		final MimeMessage message = javaMail.createMimeMessage();
+		  MimeMessage message = javaMail.createMimeMessage();
 		try {
 			final MimeMessageHelper helper = new MimeMessageHelper(message, "UTF-8");
 			helper.setFrom(properties.getFrom(), properties.getPersonal());
@@ -142,9 +141,9 @@ public class HtmlEmailService implements EmailService {
 			JasperExportManager.exportReportToPdfStream(jasperPrint, baos);
 			DataSource aAttachment = new ByteArrayDataSource(baos.toByteArray(), "application/pdf");
 
-			final MimeMessage message = javaMail.createMimeMessage();
+			  MimeMessage message = javaMail.createMimeMessage(); 
 			try {
-				final MimeMessageHelper helper = new MimeMessageHelper(message, "UTF-8");
+				final MimeMessageHelper helper = new MimeMessageHelper(message, true);
 				helper.setFrom(properties.getFrom(), properties.getPersonal());
 				helper.setTo(properties.getTo());
 				helper.setSubject(properties.getMessageSubject());
@@ -174,10 +173,10 @@ public class HtmlEmailService implements EmailService {
 	 */
 	@Override
 	public void sendHtmlEmail(String recipient, String html, Map<String, byte[]> imageSource) {
-		final MimeMessage message = javaMail.createMimeMessage();
+		  MimeMessage message = javaMail.createMimeMessage();
 		try {
 			final MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
-			helper.setFrom(properties.getTo(), properties.getFrom());
+			helper.setFrom( properties.getFrom());
 			helper.setTo(properties.getTo());
 			helper.setSubject(properties.getMessageSubject());
 			log.info("Sending HTML email to {}", recipient);
@@ -187,7 +186,7 @@ public class HtmlEmailService implements EmailService {
 				helper.addInline(val.getKey(), new ByteArrayResource(val.getValue()), "image/png");
 			}
 			javaMail.send(message);
-		} catch (MessagingException | UnsupportedEncodingException e) {
+		} catch (MessagingException e) {
 			log.error("Error encountered preparing MimeMessage", e);
 		}
 

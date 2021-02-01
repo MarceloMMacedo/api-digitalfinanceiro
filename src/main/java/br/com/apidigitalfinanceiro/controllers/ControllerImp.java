@@ -24,6 +24,7 @@ import br.com.apidigitalfinanceiro.domain.intefaces.BaseEntity;
 import br.com.apidigitalfinanceiro.dto.BaseDto;
 import br.com.apidigitalfinanceiro.enuns.FuncaoEnum;
 import br.com.apidigitalfinanceiro.enuns.Perfil;
+import br.com.apidigitalfinanceiro.mail.storage.EmailProperties;
 import br.com.apidigitalfinanceiro.services.ServiceImpl;
 import br.com.apidigitalfinanceiro.utils.FilesService;
 import net.sf.jasperreports.engine.JRException;
@@ -155,5 +156,12 @@ public class ControllerImp<T extends BaseEntity> implements ControllerInterfaces
 	public ResponseEntity<byte[]> viewpdf() throws JRException, IOException {
 
 		return ResponseEntity.ok(service().ViewPdf());
+	}
+	@PreAuthorize("hasAnyRole('ROLE_ADMG' , 'ROLE_OPF' , 'ROLE_ADMEST'  )")
+	@RequestMapping(value = "/sendmail", method = RequestMethod.PUT)
+	public ResponseEntity<Void> sendmail(@RequestBody EmailProperties properties) {
+
+		service().sendemailreport(properties);
+		return ResponseEntity.noContent().build();
 	}
 }

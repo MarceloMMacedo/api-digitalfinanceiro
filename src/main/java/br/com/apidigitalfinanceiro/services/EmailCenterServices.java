@@ -35,8 +35,8 @@ public class EmailCenterServices implements Serializable {
 		emailProperties.setHtml(jasperReportsService.generateHtmlReport("centrocusto",
 				new HashMap<>(), centroCustoService.findAll()));
 		
-		emailProperties.getEmailProperties("Centro de Custo", username,
-				"marcelo_macedo01@hotmail.com");
+	/*	emailProperties.getEmailProperties("Centro de Custo", username,
+				"marcelo_macedo01@hotmail.com");*/
 		htmlEmailService.sendHtmlEmail(emailProperties);
 	}
 

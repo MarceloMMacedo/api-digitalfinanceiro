@@ -83,16 +83,15 @@ public class EmailProperties {
 	@NotNull
 	private String from;
 
-	@Email
-	@NotBlank
-	private String to;
+	 
+	private String[] to;
 
-	public void getEmailProperties(String messageSubject, String from ,String to) {
+	public void getEmailProperties(String messageSubject, String from ,String[] to) {
 		EmailProperties emailProperties = new EmailProperties();
 		// emailProperties.getEmailProperties(messageSubject, from, inputFileName,
 		// params, dataSource);
 		setTo(to);
-		setPersonal(to);
+		setPersonal(from);
 		setFrom(from);
 		setMessageSubject(messageSubject);
 		 

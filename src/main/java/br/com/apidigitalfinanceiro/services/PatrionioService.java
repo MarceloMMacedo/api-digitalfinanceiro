@@ -124,17 +124,18 @@ public class PatrionioService extends ServiceImpl<Patrimonio> {
 
 	@Override
 	public byte[] ViewPdf() throws JRException, IOException {
-		Map<String, Object> parameters = new HashMap<String, Object>();
-		List<?> source = new ArrayList<>();
-		String templates = "centrocusto";
-		return super.ViewPdf(parameters, findAll(), templates);
+		Map<String, Object> parameters = new HashMap<String, Object>(); 
+		String templates = "patrimonios";
+		
+		return filesService.ViewPdf(parameters, findAll(), templates);
 	}
 
+	@Override
 	public void sendemailreport(EmailProperties properties) {
 		UserSS user = UserService.authenticated();
 		Map<String, Object> parameters = new HashMap<String, Object>();
 		properties.setFrom(user.getEmail());
-		String templates = "centrocusto";
+		String templates = "patrimonios";
 		htmlEmailService.sendemailreport(properties, templates, parameters, findAll());
 	}
 }

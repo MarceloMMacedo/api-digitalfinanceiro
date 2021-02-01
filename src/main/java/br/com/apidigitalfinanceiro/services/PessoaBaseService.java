@@ -1,3 +1,4 @@
+
 package br.com.apidigitalfinanceiro.services;
 
 import java.io.IOException;
@@ -11,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import br.com.apidigitalfinanceiro.config.security.UserSS;
 import br.com.apidigitalfinanceiro.config.services.UserService;
+import br.com.apidigitalfinanceiro.domain.ContacFuncionarios;
 import br.com.apidigitalfinanceiro.domain.EnderecoEmpresas;
 import br.com.apidigitalfinanceiro.domain.intefaces.BaseContactInterface;
 import br.com.apidigitalfinanceiro.domain.intefaces.BaseEnderecoInterface;
@@ -32,9 +34,9 @@ public class PessoaBaseService<T extends BaseEntity, BC extends BaseContactInter
 		return null;
 	}
 
-	 public JpaRepository<P, Integer> getRepo() {
+	public JpaRepository<P, Integer> getRepo() {
 		return null;
-	} 
+	}
 
 	public String getTipoPessoa() {
 		return null;
@@ -55,11 +57,12 @@ public class PessoaBaseService<T extends BaseEntity, BC extends BaseContactInter
 		}
 		return classe;
 	}
-@Override
-public JpaRepository<T, Integer> repo() {
-	// TODO Auto-generated method stub
-	return super.repo();
-}
+
+	@Override
+	public JpaRepository<T, Integer> repo() {
+		// TODO Auto-generated method stub
+		return super.repo();
+	}
 	/*
 	 * @Override public List<BaseDto<T>> findBaseAll() { repo().fi return
 	 * super.SetListBaseImg("avatar", "avatarView", super.findAll()); }
@@ -118,16 +121,18 @@ public JpaRepository<T, Integer> repo() {
 		obj = (T) getRepo().save(pessoa);
 		return (obj);
 	}
+
 	@Override
 	public List<BaseDto> findBaseAll() {
 		List<BaseDto> baseDto = new ArrayList<>();
-		for (T empresas :  findAll()) {
+		for (T empresas : findAll()) {
 			pessoa = (P) empresas;
 			baseDto.add(new BaseDto(pessoa.getId(), pessoa.getName(), pessoa.getCpfOnCnpj(), pessoa.getAvatar(),
 					pessoa.getAvatarView(), pessoa.getEmail()));
 		}
 		return baseDto;
 	}
+
 	@Override
 	public String uploadProfilePicture(MultipartFile file, Integer id, String fieldname) {
 		Field fldfonte = null;
@@ -172,4 +177,37 @@ public JpaRepository<T, Integer> repo() {
 		}
 		return fieldname;
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<BC> getListContact( int id) {
+		UserSS user = UserService.authenticated();
+		if (user == null) {
+			throw new AuthorizationException("Acesso negado");
+		}
+
+		List<BC> contacreturn = new ArrayList<>();
+		pessoa = getRepo().findById(id).get();
+
+		for (BC contacFuncionarios2 : (List<BC>) pessoa.getContatos()) {
+			contacreturn.add(contacFuncionarios2);
+		}
+		return contacreturn;
+
+	}
+
+	public BC saveContact(int id, BC contact) {
+		UserSS user = UserService.authenticated();
+		pessoa = getRepo().findById(user.getId()).get();	 
+		try {
+			contact.setPessoas(getClasse().newInstance());
+		} catch (InstantiationException | IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		contact.getPessoas().setId(id);
+		contact = getRepoContact().save(contact);
+		return contact;
+	}
+	 
+	
 }

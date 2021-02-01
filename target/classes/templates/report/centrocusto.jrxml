@@ -50,7 +50,7 @@
 		</band>
 	</title>
 	<columnHeader>
-		<band height="35">
+		<band height="30">
 			<staticText>
 				<reportElement x="25" y="10" width="179" height="20" uuid="b85acf27-4ef9-4d68-8aa4-95c4ecf90198">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="46993548-3071-40ed-af02-2de58cf65af4"/>

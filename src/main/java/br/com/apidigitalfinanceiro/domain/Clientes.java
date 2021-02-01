@@ -38,9 +38,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Data
 @NoArgsConstructor
-public class Clientes implements BaseEntity, Serializable, PessoaBaseInterface<ContacClientes, EnderecoClientes> {
+@Data
+public class Clientes  
+
+implements BaseEntity, Serializable, PessoaBaseInterface<ContacClientes, EnderecoClientes> {
  
 	private static final long serialVersionUID = 1L;
 
@@ -127,7 +129,7 @@ public class Clientes implements BaseEntity, Serializable, PessoaBaseInterface<C
 	 */
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pessoas")
-	private List<ContacClientes> contasBancarias = new ArrayList<>();
+	private List<ContasBancClientes> contasBancarias = new ArrayList<>();
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pessoas")
 	private List<ContacClientes> contatos = new ArrayList<>();
@@ -143,10 +145,7 @@ public class Clientes implements BaseEntity, Serializable, PessoaBaseInterface<C
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	private ContacClientes contatoPrincipal;
  
-	/*@OneToMany(fetch = FetchType.LAZY, mappedBy = "cliente")
-	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-	private List<Contrato> contratos = new ArrayList<>();
-*/
+	 
 	@Override
 	public int hashCode() {
 		final int prime = 31;

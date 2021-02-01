@@ -15,8 +15,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import br.com.apidigitalfinanceiro.domain.intefaces.BaseContactInterface;
 import br.com.apidigitalfinanceiro.domain.intefaces.BaseEntity;
+import lombok.Data;
 
 @Entity
+@Data
 public class ContacFuncionarios implements BaseEntity, Serializable, BaseContactInterface {
 
 	private static final long serialVersionUID = 1L;
@@ -39,56 +41,7 @@ public class ContacFuncionarios implements BaseEntity, Serializable, BaseContact
 	@JoinColumn()
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	private Empresas empresa;
-	@Override
-	public Integer getId() {
-		return id;
-	}
-
-	@Override
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getFunction() {
-		return function;
-	}
-
-	public void setFunction(String function) {
-		this.function = function;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getTelefone() {
-		return telefone;
-	}
-
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
-	}
-
+ 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -114,25 +67,11 @@ public class ContacFuncionarios implements BaseEntity, Serializable, BaseContact
 		return true;
 	}
 
-	public Funcionarios getPessoas() {
-		return pessoas;
-	}
-
-	public void setPessoas(Funcionarios pessoas) {
-		this.pessoas = pessoas;
-	}
-
 	@Override
 	public void setPessoas(BaseEntity pessoas) {
-		this.pessoas = (Funcionarios) pessoas;
+	this.pessoas=(Funcionarios) pessoas;
+		
 	}
-
-	public Empresas getEmpresa() {
-		return empresa;
-	}
-
-	public void setEmpresa(Empresas empresa) {
-		this.empresa = empresa;
-	}
+ 
 
 }

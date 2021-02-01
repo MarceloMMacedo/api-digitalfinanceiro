@@ -22,6 +22,7 @@ import br.com.apidigitalfinanceiro.enuns.TipoPatrimonioEnum;
 import br.com.apidigitalfinanceiro.mail.storage.EmailProperties;
 import br.com.apidigitalfinanceiro.services.PatrionioService;
 import br.com.apidigitalfinanceiro.services.ServiceImpl;
+import net.sf.jasperreports.engine.JRException;
 
 @RestController
 @RequestMapping(value = "/patrimonios")
@@ -63,11 +64,13 @@ public class PatrimonioController extends ControllerImp<Patrimonio> {
 		return ResponseEntity.ok(baseDto);
 	}
 
-	@PreAuthorize("hasAnyRole('ROLE_ADMG' , 'ROLE_OPF' , 'ROLE_ADMEST'  )")
-	@RequestMapping(value = "/sendmail", method = RequestMethod.PUT)
-	public ResponseEntity<Void> sendmail(@RequestBody EmailProperties properties ) {
+	
 
-	 service.sendemailreport(properties);
-		return ResponseEntity.noContent().build();
+	@Override
+	@PreAuthorize("hasAnyRole('ROLE_ADMG' , 'ROLE_OPF' , 'ROLE_ADMEST'  )")
+	@RequestMapping(value = "/viewpdf", method = RequestMethod.GET)
+	public ResponseEntity<byte[]> viewpdf() throws JRException, IOException {
+
+		return ResponseEntity.ok(service.ViewPdf());
 	}
 }

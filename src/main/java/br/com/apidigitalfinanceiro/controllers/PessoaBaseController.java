@@ -22,6 +22,8 @@ public class PessoaBaseController<T extends BaseEntity> extends ControllerImp<T>
 	/**
 	 * 
 	 */
+	
+	
 	private static final long serialVersionUID = 1L;
 
 	@Override
@@ -62,5 +64,9 @@ public class PessoaBaseController<T extends BaseEntity> extends ControllerImp<T>
 	public ResponseEntity<List<BaseDto>> findBaseAll() {
 		 return ResponseEntity.ok(   service().findBaseAll());
 	}
-	 
+	@Override
+	public ResponseEntity<T> findemail(String email) {
+		// TODO Auto-generated method stub
+		return super.findemail(email);
+	} 
 }

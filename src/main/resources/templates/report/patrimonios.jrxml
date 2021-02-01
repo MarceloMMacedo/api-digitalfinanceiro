@@ -7,36 +7,72 @@
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
-	<field name="saldoDisponivel" class="java.lang.Double">
-		<fieldDescription><![CDATA[saldoDisponivel]]></fieldDescription>
+	<field name="tipoPatrimonio" class="java.lang.String">
+		<fieldDescription><![CDATA[tipoPatrimonio]]></fieldDescription>
 	</field>
-	<field name="saldoPagar" class="java.lang.Double">
-		<fieldDescription><![CDATA[saldoPagar]]></fieldDescription>
+	<field name="avatarView" class="java.lang.String">
+		<fieldDescription><![CDATA[avatarView]]></fieldDescription>
+	</field>
+	<field name="medidorContrato" class="java.lang.Integer">
+		<fieldDescription><![CDATA[medidorContrato]]></fieldDescription>
+	</field>
+	<field name="codPatrimonio" class="java.lang.String">
+		<fieldDescription><![CDATA[codPatrimonio]]></fieldDescription>
+	</field>
+	<field name="contrato" class="br.com.apidigitalfinanceiro.domain.Contrato">
+		<fieldDescription><![CDATA[contrato]]></fieldDescription>
+	</field>
+	<field name="avatar" class="java.lang.String">
+		<fieldDescription><![CDATA[avatar]]></fieldDescription>
+	</field>
+	<field name="dataInstalacao" class="java.util.Date">
+		<fieldDescription><![CDATA[dataInstalacao]]></fieldDescription>
+	</field>
+	<field name="modelo" class="br.com.apidigitalfinanceiro.domain.Modelo">
+		<fieldDescription><![CDATA[modelo]]></fieldDescription>
+	</field>
+	<field name="dataAquisicao" class="java.util.Date">
+		<fieldDescription><![CDATA[dataAquisicao]]></fieldDescription>
+	</field>
+	<field name="dataInatividade" class="java.util.Date">
+		<fieldDescription><![CDATA[dataInatividade]]></fieldDescription>
+	</field>
+	<field name="madidorremocao" class="java.lang.Integer">
+		<fieldDescription><![CDATA[madidorremocao]]></fieldDescription>
+	</field>
+	<field name="imagepatrimonio" class="java.lang.String">
+		<fieldDescription><![CDATA[imagepatrimonio]]></fieldDescription>
+	</field>
+	<field name="serial" class="java.lang.String">
+		<fieldDescription><![CDATA[serial]]></fieldDescription>
+	</field>
+	<field name="medidorManutencao" class="java.lang.Integer">
+		<fieldDescription><![CDATA[medidorManutencao]]></fieldDescription>
+	</field>
+	<field name="motivoDescarte" class="java.lang.String">
+		<fieldDescription><![CDATA[motivoDescarte]]></fieldDescription>
 	</field>
 	<field name="name" class="java.lang.String">
 		<fieldDescription><![CDATA[name]]></fieldDescription>
 	</field>
-	<field name="saldoReceber" class="java.lang.Double">
-		<fieldDescription><![CDATA[saldoReceber]]></fieldDescription>
+	<field name="medidorInstalacao" class="java.lang.Integer">
+		<fieldDescription><![CDATA[medidorInstalacao]]></fieldDescription>
 	</field>
 	<field name="id" class="java.lang.Integer">
 		<fieldDescription><![CDATA[id]]></fieldDescription>
 	</field>
-	<field name="saldo" class="java.lang.Double">
-		<fieldDescription><![CDATA[saldo]]></fieldDescription>
+	<field name="empresa" class="br.com.apidigitalfinanceiro.domain.Empresas">
+		<fieldDescription><![CDATA[empresa]]></fieldDescription>
 	</field>
-	<variable name="Variable_1" class="java.lang.Double" calculation="Sum">
-		<variableExpression><![CDATA[$F{saldo}]]></variableExpression>
-	</variable>
-	<variable name="totalPagar" class="java.lang.Double" calculation="Sum">
-		<variableExpression><![CDATA[$F{saldoPagar}]]></variableExpression>
-	</variable>
-	<variable name="totalReceber" class="java.lang.Double" calculation="Sum">
-		<variableExpression><![CDATA[$F{saldoReceber}]]></variableExpression>
-	</variable>
-	<variable name="totalDisponivel" class="java.lang.Double" calculation="Sum">
-		<variableExpression><![CDATA[$F{saldoDisponivel}]]></variableExpression>
-	</variable>
+	<field name="statuslocacao" class="java.lang.String">
+		<fieldDescription><![CDATA[statuslocacao]]></fieldDescription>
+	</field>
+	<field name="imagepatrimonioView" class="java.lang.String">
+		<fieldDescription><![CDATA[imagepatrimonioView]]></fieldDescription>
+	</field>
+	<field name="status" class="java.lang.String">
+		<fieldDescription><![CDATA[status]]></fieldDescription>
+	</field>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -50,7 +86,7 @@
 		</band>
 	</title>
 	<columnHeader>
-		<band height="66">
+		<band height="58">
 			<staticText>
 				<reportElement x="20" y="38" width="179" height="20" uuid="b85acf27-4ef9-4d68-8aa4-95c4ecf90198">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="46993548-3071-40ed-af02-2de58cf65af4"/>
@@ -64,7 +100,7 @@
 				<text><![CDATA[Descrição]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="200" y="38" width="80" height="20" uuid="cc12a266-6414-451d-95d1-7b5488fcdce2">
+				<reportElement x="199" y="38" width="81" height="20" uuid="cc12a266-6414-451d-95d1-7b5488fcdce2">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9ed3f8a7-2a98-47c3-84e2-e2fb8d7642d1"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -103,7 +139,7 @@
 				<text><![CDATA[Tipo Patrimônio]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="460" y="38" width="80" height="20" uuid="dac61f67-9bab-4d23-a917-0a3ae4d70f7f">
+				<reportElement x="460" y="38" width="91" height="20" uuid="dac61f67-9bab-4d23-a917-0a3ae4d70f7f">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="05b79eb1-7f69-41aa-921d-c88dc49b142b"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -133,9 +169,70 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="20" splitType="Stretch"/>
+		<band height="21" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="199" y="0" width="81" height="20" uuid="f7bc011d-2bba-4be3-89d8-e24b321f1cdc"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#737373"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{codPatrimonio}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="280" y="0" width="80" height="20" uuid="38f47241-42be-44bd-ab24-4ec4029a013e"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#737373"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{serial}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="360" y="0" width="100" height="20" uuid="e975f385-1537-4732-96f0-eb4e9f32db6f"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#737373"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{tipoPatrimonio}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="460" y="0" width="91" height="20" uuid="fa6f2e24-4590-4d1d-92d2-31484ed64fef"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#737373"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{modelo}.getName()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="50" y="0" width="149" height="20" uuid="471812c2-7cf6-4ebd-aae0-0e023140084a">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25" lineColor="#737373"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<image scaleImage="FillFrame">
+				<reportElement stretchType="ElementGroupHeight" x="20" y="0" width="31" height="20" uuid="6cbe4848-5358-44ad-a063-471f5eaf500c">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.0" lineColor="#737373"/>
+					<topPen lineWidth="0.5" lineColor="#737373"/>
+					<leftPen lineWidth="0.5" lineColor="#737373"/>
+					<bottomPen lineWidth="0.5" lineColor="#737373"/>
+				</box>
+				<imageExpression><![CDATA[$F{avatarView}]]></imageExpression>
+			</image>
+		</band>
 	</detail>
-	<summary>
-		<band height="30" splitType="Stretch"/>
-	</summary>
 </jasperReport>
