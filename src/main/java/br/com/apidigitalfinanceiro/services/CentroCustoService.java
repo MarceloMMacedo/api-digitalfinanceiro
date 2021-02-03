@@ -12,7 +12,10 @@ import org.springframework.core.io.ResourceLoader;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
+import br.com.apidigitalfinanceiro.config.security.UserSS;
+import br.com.apidigitalfinanceiro.config.services.UserService;
 import br.com.apidigitalfinanceiro.domain.CentroCusto;
+import br.com.apidigitalfinanceiro.mail.storage.EmailProperties;
 import br.com.apidigitalfinanceiro.repository.CentroCustoRepository;
 import br.com.apidigitalfinanceiro.repository.FaturaRepository;
 import net.sf.jasperreports.engine.JRException;
@@ -38,7 +41,22 @@ public class CentroCustoService extends ServiceImpl<CentroCusto> {
 	public JpaRepository<CentroCusto, Integer> repo() {
 		return repo;
 	}
+	@Override
+	public void sendemailreport(EmailProperties properties) {
+		UserSS user = UserService.authenticated();
+		Map<String, Object> parameters = new HashMap<String, Object>();
+		properties.setFrom(user.getEmail());
+		String templates = "centrocusto";
+		htmlEmailService.sendemailreport(properties, templates, parameters, findAll());
+	}
+	@Override
+	public byte[] ViewPdf() throws JRException, IOException {
+		Map<String, Object> parameters = new HashMap<String, Object>();
 
+		String templates = "centrocusto";
+		return filesService.ViewPdf(parameters, findAll(), templates);
+	}
+	
 	/*@Override
 	public byte[] ViewPdf() throws JRException, IOException {
 		Map<String, Object> parameters = new HashMap<String, Object>();

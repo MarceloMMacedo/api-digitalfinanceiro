@@ -1,15 +1,20 @@
 package br.com.apidigitalfinanceiro.services;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
+import br.com.apidigitalfinanceiro.config.security.UserSS;
+import br.com.apidigitalfinanceiro.config.services.UserService;
 import br.com.apidigitalfinanceiro.domain.CentroCusto;
 import br.com.apidigitalfinanceiro.domain.Clientes;
 import br.com.apidigitalfinanceiro.domain.Contrato;
@@ -22,6 +27,7 @@ import br.com.apidigitalfinanceiro.dto.BaseDto;
 import br.com.apidigitalfinanceiro.enuns.SimNaoEnum;
 import br.com.apidigitalfinanceiro.enuns.StatusActiv;
 import br.com.apidigitalfinanceiro.enuns.TipoMovimentoEnum;
+import br.com.apidigitalfinanceiro.mail.storage.EmailProperties;
 import br.com.apidigitalfinanceiro.repository.CentroCustoRepository;
 import br.com.apidigitalfinanceiro.repository.ClientesRepository;
 import br.com.apidigitalfinanceiro.repository.ContratoRepository;
@@ -32,6 +38,7 @@ import br.com.apidigitalfinanceiro.repository.GrupoFinanceiroContratoRepository;
 import br.com.apidigitalfinanceiro.repository.MovimentoContratoRepository;
 import br.com.apidigitalfinanceiro.repository.PatrimonioRepository;
 import br.com.apidigitalfinanceiro.utils.Extenso;
+import net.sf.jasperreports.engine.JRException;
 
 @Service
 public class ContratoService extends ServiceImpl<Contrato> {
@@ -359,5 +366,20 @@ public class ContratoService extends ServiceImpl<Contrato> {
 		}
 		fichaLeituraRepository.saveAll(fichas);
 
+	}
+	@Override
+	public void sendemailreport(EmailProperties properties) {
+		UserSS user = UserService.authenticated();
+		Map<String, Object> parameters = new HashMap<String, Object>();
+		properties.setFrom(user.getEmail());
+		String templates = "contratos";
+		htmlEmailService.sendemailreport(properties, templates, parameters, findAll());
+	}
+	@Override
+	public byte[] ViewPdf() throws JRException, IOException {
+		Map<String, Object> parameters = new HashMap<String, Object>();
+
+		String templates = "contratos";
+		return filesService.ViewPdf(parameters, findAll(), templates);
 	}
 }

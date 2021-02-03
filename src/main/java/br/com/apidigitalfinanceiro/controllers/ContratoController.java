@@ -25,6 +25,7 @@ import br.com.apidigitalfinanceiro.dto.BaseDto;
 import br.com.apidigitalfinanceiro.services.ContratoService;
 import br.com.apidigitalfinanceiro.services.ServiceImpl;
 import br.com.apidigitalfinanceiro.utils.FilesService;
+import net.sf.jasperreports.engine.JRException;
 
 @Controller
 @RequestMapping(value = "/contratos")
@@ -109,5 +110,13 @@ public class ContratoController extends ControllerImp<Contrato> {
 
 		MovimentoContrato movimentoContrato = service.findMovimentoContrato(id);
 		return ResponseEntity.ok().body(movimentoContrato);
+	}
+
+	@PreAuthorize("hasAnyRole('ROLE_ADMG' , 'ROLE_OPF' , 'ROLE_ADMEST'  )")
+	@RequestMapping(value = "/viewpdf",method = RequestMethod.GET)
+	public ResponseEntity<byte[]> viewpdf( )
+			throws JRException, IOException {
+		 
+		return   ResponseEntity.ok( service().ViewPdf() );
 	}
 }
